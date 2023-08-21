@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: admin-api
-          image: 689357237475.dkr.ecr.us-east-1.amazonaws.com/admin-api:latest
+          image: 689357237475.dkr.ecr.us-east-1.amazonaws.com/admin:0.0.12
           imagePullPolicy: Always
           livenessProbe:
             httpGet:
@@ -39,7 +39,7 @@ spec:
             timeoutSeconds: 2
           readinessProbe:
             httpGet:
-              path: '/readiness_check'
+              path: /readiness_check
               port: 5151
             initialDelaySeconds: 5
             timeoutSeconds: 5

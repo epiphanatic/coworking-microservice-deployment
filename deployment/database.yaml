@@ -58,13 +58,35 @@ spec:
     spec:
       containers:
         - name: app-db
-          image: 689357237475.dkr.ecr.us-east-1.amazonaws.com/db-api:latest
+          image: 689357237475.dkr.ecr.us-east-1.amazonaws.com/db:0.0.22
           imagePullPolicy: 'IfNotPresent'
           ports:
             - containerPort: 5432
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: postgresdb
+          env:
+            - name: DB_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: db-env
+                  key: DB_USERNAME
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: DB_PASSWORD
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: db-env
+                  key: POSTGRES_DB
+            - name: POSTGRES_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: db-env
+                  key: POSTGRES_USER
+
       volumes:
         - name: postgresdb
           persistentVolumeClaim:

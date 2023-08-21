@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: analytics-api
-          image: 689357237475.dkr.ecr.us-east-1.amazonaws.com/analytics:0.0.18
+          image: 689357237475.dkr.ecr.us-east-1.amazonaws.com/analytics:0.0.1
           imagePullPolicy: Always
           livenessProbe:
             httpGet:

@@ -7,21 +7,26 @@ from flask_sqlalchemy import SQLAlchemy
 
 db_username = os.environ["DB_USERNAME"]
 
-# Get the base64 encoded password from the environment variable
-encoded_password = os.environ["DB_PASSWORD"]
+# simply cannot get anything to work with the password. no matter what i do it is the "incorrect padding"
+#  or some other error. scoured the internet for hours and tried everything i could find. nothing.
+#  everyting that chatbot suggested does not work.
+# # Get the base64 encoded password from the environment variable
+# encoded_password = os.environ["DB_PASSWORD"]
 
-# Add padding characters if necessary
-# padding_length = 4 - (len(encoded_password) % 4)
-# encoded_password += "=" * padding_length
+# # Add padding characters if necessary
+# # padding_length = 4 - (len(encoded_password) % 4)
+# # encoded_password += "=" * padding_length
 
-# Decode the password from base64 to bytes
-decoded_bytes = base64.b64decode(encoded_password)
+# # Decode the password from base64 to bytes
+# decoded_bytes = base64.b64decode(encoded_password)
 
-# Convert the bytes to a string
-cleartext_password = decoded_bytes.decode("utf-8")
+# # Convert the bytes to a string
+# cleartext_password = decoded_bytes.decode("utf-8")
 
-# Store the decoded password as db_password
-db_password = cleartext_password
+# # Store the decoded password as db_password
+# db_password = cleartext_password
+
+db_password = "9SM9UQM4km"
 
 db_host = os.environ.get("DB_HOST", "127.0.0.1")
 db_port = os.environ.get("DB_PORT", "5432")

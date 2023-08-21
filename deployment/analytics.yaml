@@ -55,5 +55,8 @@ spec:
                   name: db-secret
                   key: DB_PASSWORD
             - name: DB_HOST
-              value: app-db
+              valueFrom:
+                configMapKeyRef:
+                  name: db-env
+                  key: DB_HOST
       restartPolicy: Always

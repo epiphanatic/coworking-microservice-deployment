@@ -4,11 +4,11 @@ The Coworking Space Service is a set of APIs that enables users to request one-t
 
 ## Overview
 
-There are 5 separate git repositories: Admin API, Analytics API, User API, App DB, and Deployment files, where the first 4 have their own codebuild pipelines hooked into their respective repositories as well as 4 respective ECR repositories from which the deployment files pull from. The deployment files repository contains all the needed deployment templates to deploy the services.
+There are 2 services / APIs: analytics API and its database. Since the database is installed via Helm, which also creates the DB service and pod/s, there is only one codebuild pipeline which is for the analytics API. The deployment files contain the needed deployment template to deploy the service as well as db configuration and secret files.
 
 ## Deployment Process and Changes
 
-After the cluster and node group has been set up, helm is installed, then the services are deployed with the command `kubectl apply -f deployment/ --force`. The same command can be used to update the services since the --force flag will replace the existing services with the new ones.
+After the cluster and node group has been set up, helm is installed, then the analytics service is deployed with the command `kubectl apply -f deployment/ --force`. The same command can be used to update the services since the --force flag will replace the existing service and pod/s with the new ones.
 
 ## Versioning
 
